@@ -2,12 +2,12 @@
   "author": "Jonathan Willard",
   "name": "vue2-forms",
   "description": "Helpers designed to manage the data and errors of Vue form components",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "homepage": "https://github.com/faze11/vue2-forms",
   "bugs": "https://github.com/faze11/vue2-forms/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/cowboy/javascript-sync-async-foreach.git"
+    "url": "git://github.com/faze11/vue2-forms.git"
   },
   "main": "index.js",
   "engines": {
