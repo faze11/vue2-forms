@@ -15,7 +15,7 @@ export default class Form {
         this.errors = new Errors();
     }
 
-    setOption(option, defaultValue) {
+    static setOption(option, defaultValue) {
         return (typeof option === 'undefined') ? defaultValue : option;
     }
 
