@@ -15,17 +15,18 @@ export default class Form {
         this.errors = new Errors();
     }
 
-    static setOption(option, defaultValue) {
+    setOption(option, defaultValue) {
         return (typeof option === 'undefined') ? defaultValue : option;
     }
 
     data() {
-        let data = Object.assign({}, this);
+        let payload = {};
 
-        delete data.errors;
-        delete data.originalData;
+        for (let property in this.originalData) {
+            payload[property] = this[property];
+        }
 
-        return data;
+        return payload;
     }
 
     reset() {
@@ -41,34 +42,34 @@ export default class Form {
             axios[method](url, this.data())
                 .then(response => {
                     this.onSuccess(response.data);
-
+                    //
                     resolve(response.data);
                 })
                 .catch(error => {
                     this.onFail(error.response.data);
-
+                    //
                     reject(error.response.data);
                 });
         });
     }
 
     put(url) {
-        this.submit('put', url);
+        return this.submit('put', url);
     }
 
     patch(url) {
-        this.submit('patch', url);
+        return this.submit('patch', url);
     }
 
     post(url) {
-        this.submit('post', url);
+        return this.submit('post', url);
     }
 
     delete(url) {
-        this.submit('delete', url);
+        return this.submit('delete', url);
     }
 
-    onSuccess(data) {
+    onSuccess() {
         if(this.options.clearOnSubmit === true)
             this.reset();
         else
