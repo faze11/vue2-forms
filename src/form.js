@@ -25,7 +25,6 @@ export default class Form {
         for (let property in this.originalData) {
             payload[property] = this[property];
         }
-
         return payload;
     }
 
@@ -43,12 +42,12 @@ export default class Form {
                 .then(response => {
                     this.onSuccess(response.data);
                     //
-                    resolve(response.data);
+                    resolve(response);
                 })
                 .catch(error => {
                     this.onFail(error.response.data);
                     //
-                    reject(error.response.data);
+                    reject(error);
                 });
         });
     }
