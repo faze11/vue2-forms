@@ -2,7 +2,7 @@
   "author": "Jonathan Willard",
   "name": "vue2-forms",
   "description": "Helpers designed to manage the data and errors of Vue form components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://github.com/faze11/vue2-forms",
   "bugs": "https://github.com/faze11/vue2-forms/issues",
   "repository": {
