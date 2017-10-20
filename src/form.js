@@ -3,13 +3,14 @@ import Errors from './errors.js';
 export default class Form {
     constructor(data, config={}) {
         this.originalData = data;
+        this.isSubmitting = false;
 
         for (let field in data) {
             this[field] = data[field];
         }
 
         this.options = {
-            clearOnSubmit: this.setOption(config.clearOnSubmit),
+            clearOnSubmit: this.setOption(config.clearOnSubmit, false),
         };
 
         this.errors = new Errors();
@@ -37,17 +38,20 @@ export default class Form {
     }
 
     submit(method, url) {
+        this.isSubmitting = true;
         return new Promise((resolve, reject) => {
             axios[method](url, this.data())
                 .then(response => {
                     this.onSuccess(response.data);
                     //
                     resolve(response);
+                    this.isSubmitting = false;
                 })
                 .catch(error => {
                     this.onFail(error.response.data);
                     //
                     reject(error);
+                    this.isSubmitting = false;
                 });
         });
     }
