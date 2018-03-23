@@ -20,8 +20,8 @@ export default class Form {
         return (typeof option === 'undefined') ? defaultValue : option;
     }
 
-    fill(data, reset=true) {
-        if (resset) {
+    fill(data, _reset=true) {
+        if (_reset) {
             this.reset();
         }
         for (let field in data) {
